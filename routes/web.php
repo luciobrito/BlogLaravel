@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ControleUsuario;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,4 @@ Route::get('/', function () {
 Route :: get('/home', function(){
     return view('home');
 });
-Route :: post('/registrar', function(){
-    return 'Obrigado!';
-});
+Route :: post ('/registrar', [ControleUsuario::class, 'registro']);
