@@ -21,3 +21,4 @@ Route :: get('/home', function(){
     return view('home');
 });
 Route :: post ('/registrar', [ControleUsuario::class, 'registro']);
+Route :: post('/logout', [ControleUsuario::class,'logout']);
