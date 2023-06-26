@@ -12,6 +12,20 @@
     @csrf
     <button>Sair</button>
     </form>
+    <h2>Criar um novo post!</h2>
+    <form action="/create-post" method="post">
+        @csrf
+        <input type="text" name="title">
+        <textarea name="body" placeholder="Conteúdo"></textarea>
+        <button>Enviar Post</button>
+    </form>
+    <div>
+        <h2>Todos os Posts!</h2>
+        @foreach($posts as $post)
+        <h3> {{$post['title']}} </h3>
+        <p> {{$post['body']}} </p>
+        @endforeach
+    </div>
     @else
     <h1>Registrar</h1>
     <form action="/registrar" method="POST">

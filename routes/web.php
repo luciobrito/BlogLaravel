@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ControleUsuario;
 
 /*
@@ -18,7 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route :: get('/home', function(){
-    return view('home');
+    $posts = Post::all();
+    return view('home',['posts'=> $posts]);
 });
 Route :: post ('/registrar', [ControleUsuario::class, 'registro']);
 Route :: post('/logout', [ControleUsuario::class,'logout']);
+Route :: post('/login', [ControleUsuario::class,'login']);
+
+//Rotas dos posts
+Route::post('/create-post',[PostController::class,'createPost']);

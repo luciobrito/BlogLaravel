@@ -9,6 +9,16 @@ use Illuminate\Validation\Rule;
 
 class ControleUsuario extends Controller
 {
+    public function login(Request $request){
+        $incomingFields = $request -> validate([
+            'loginemail' => 'required',
+            'loginpassword' => 'required'
+        ]);
+        if(auth()->attempt(['email' => $incomingFields['loginemail'],'password' => $incomingFields['loginpassword']])){
+            $request->session()->regenerate();
+        }
+        return redirect('/home');
+    }
     public function logout(){
         auth()->logout();
         return redirect('/home');
@@ -22,6 +32,6 @@ class ControleUsuario extends Controller
         $incomingFields['password'] = bcrypt($incomingFields['password']);
         $user = User::create($incomingFields);
         auth()-> login($user);
-        return redirect('/');
+        return redirect('/home');
     }
 }
