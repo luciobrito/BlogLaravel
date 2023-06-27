@@ -22,8 +22,14 @@
     <div>
         <h2>Todos os Posts!</h2>
         @foreach($posts as $post)
-        <h3> {{$post['title']}} </h3>
+        <h3> {{$post['title']}} por {{$post->user->name}} <!--Duas tabelas relacionadas, a user e a post--></h3>
         <p> {{$post['body']}} </p>
+        <p><a href="/edit-post/{{$post->id}}">Editar</a></p>
+        <form action="/delete-post/{{$post->id}}" method="post">
+            @csrf
+            @method('DELETE')
+            <button>Apagar</button>
+        </form>
         @endforeach
     </div>
     @else

@@ -20,7 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route :: get('/home', function(){
-    $posts = Post::all();
+    $posts = [];
+    if(auth()->check())
+    {$posts = auth()->user()->usersCoolPosts()->latest()->get();}
+    //$posts = Post::where('user_id', auth()->id())->get();
     return view('home',['posts'=> $posts]);
 });
 Route :: post ('/registrar', [ControleUsuario::class, 'registro']);
@@ -29,3 +32,6 @@ Route :: post('/login', [ControleUsuario::class,'login']);
 
 //Rotas dos posts
 Route::post('/create-post',[PostController::class,'createPost']);
+Route::get('/edit-post/{post}',[PostController::class,'showEditScreen']);
+Route::put('/edit-post/{post}',[PostController::class,'actuallyUpdatePost']);
+Route::delete('/delete-post/{post}',[PostController::class,'deletePost']);
