@@ -16,10 +16,10 @@ use App\Http\Controllers\ControleUsuario;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
+Route::get('/', function () {
+    return redirect('/home');
 });
-Route::get('/', function(){
+Route::get('/home', function(){
     $posts = [];
     if(auth()->check())
     {$posts = auth()->user()->usersCoolPosts()->latest()->get();}

@@ -46,7 +46,7 @@
     <form action="/login" method="POST">
         @csrf <!--Importante para o funcionamento do formulário!-->
         
-        <input name = "loginemail" type="text" name="Email" id="">
+        <input name = "loginemail" type="text" placeholder="Email" name="Email" id="">
         <input name = "loginpassword" type="password" placeholder="Senha" name="" id="">
         <button>Entrar</button>
     </form>
