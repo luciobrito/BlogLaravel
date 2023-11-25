@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
+    <title>Teste Azure</title>
 </head>
 <body>
     @auth
@@ -33,11 +33,12 @@
         @endforeach
     </div>
     @else
+    <h2>Site para testar Laravel na Azure</h2>
     <h1>Registrar</h1>
     <form action="/registrar" method="POST">
         @csrf <!--Importante para o funcionamento do formulário!-->
-        <input name ="name" type="text" name="Nome" id="">
-        <input name = "email" type="text" name="Email" id="">
+        <input name ="name" type="text" name="Nome" placeholder="Nome" id="">
+        <input name = "email" type="text" name="Email" placeholder="Email" id="">
         <input name = "password" type="password" placeholder="Senha" name="" id="">
         <button>Registrar</button>
     </form>
